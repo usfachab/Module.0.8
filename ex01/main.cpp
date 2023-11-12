@@ -2,7 +2,7 @@
 
 int main()
 {
-    Span span( 4 );
+    Span span( 100 );
 
     try
     {
@@ -14,12 +14,15 @@ int main()
         // }
         // span.printVec();
 
-        span.addNumber( -3 );
         span.addNumber( -10 );
-        span.addNumber( -6 );
-        // span.addNumber( 3 );
+        span.addNumber( -5 );
+        span.addNumber( -10 );
+        span.addNumber( -3 );
 
-        // std::cout << span.shortestSpan() << std::endl;
+        span.fillContainer();
+        // span.printVec();
+
+        std::cout << span.shortestSpan() << std::endl;
         std::cout << span.longestSpan() << std::endl;
         
     }

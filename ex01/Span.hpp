@@ -23,6 +23,9 @@ public:
     void addNumber( int );
     int shortestSpan() const;
     int longestSpan() const;
+    void fillContainer();
 };
+
+
 
 #endif
