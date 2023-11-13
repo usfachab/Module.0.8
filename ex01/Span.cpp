@@ -69,7 +69,7 @@ int Span::longestSpan() const
         throw std::out_of_range( "Error: array size" );
 }
 
-void Span::fillContainer( std::vector<int>::iterator begin, std::vector<int>::iterator end )
+void Span::fillContainer( iterator begin, iterator end )
 {
     try
     {

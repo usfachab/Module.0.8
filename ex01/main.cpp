@@ -20,8 +20,8 @@ int main()
 
     try
     {
-        std::vector<int>::iterator itb = arr.begin();
-        std::vector<int>::iterator ite = arr.end();
+        iterator itb = arr.begin();
+        iterator ite = arr.end();
 
         span.fillContainer( itb, ite );
 

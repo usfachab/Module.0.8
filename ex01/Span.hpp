@@ -5,7 +5,8 @@
 #include <stdexcept>
 #include <vector>
 #include <algorithm>
-#include <cmath>
+
+typedef std::vector<int>::iterator iterator;
 
 class Span
 {
@@ -23,7 +24,7 @@ public:
     void addNumber( int );
     int shortestSpan() const;
     int longestSpan() const;
-    void fillContainer( std::vector<int>::iterator, std::vector<int>::iterator );
+    void fillContainer( iterator, iterator );
 };
 
 
