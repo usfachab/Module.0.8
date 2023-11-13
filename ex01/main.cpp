@@ -1,29 +1,32 @@
 #include "Span.hpp"
+#include <array>
 
 int main()
 {
-    Span span( 100 );
+    Span span( 10 );
+
+    std::vector<int> arr;
+    arr.push_back( -9 );
+    arr.push_back( 1 );
+    arr.push_back( 2 );
+    arr.push_back( 3 );
+    arr.push_back( 4 );
+    arr.push_back( 5 );
+    arr.push_back( 6 );
+    arr.push_back( 7 );
+    arr.push_back( 8 );
+    arr.push_back( 9 );
+    // arr.push_back( 10 );
 
     try
     {
-        // srand( time( 0 ) );
-        // for( int i = 0; i < 10; i++)
-        // {
-        //     int value = rand() % 10;
-        //     span.addNumber( value );
-        // }
-        // span.printVec();
+        std::vector<int>::iterator itb = arr.begin();
+        std::vector<int>::iterator ite = arr.end();
 
-        span.addNumber( -10 );
-        span.addNumber( -5 );
-        span.addNumber( -10 );
-        span.addNumber( -3 );
+        span.fillContainer( itb, ite );
 
-        span.fillContainer();
-        // span.printVec();
-
-        std::cout << span.shortestSpan() << std::endl;
-        std::cout << span.longestSpan() << std::endl;
+        std::cout << "Shortest distance: " << span.shortestSpan() << std::endl;
+        std::cout << "Longest distance: " << span.longestSpan() << std::endl;
         
     }
     catch( const std::exception& e )

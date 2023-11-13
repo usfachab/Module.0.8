@@ -1,4 +1,6 @@
 #include "easyfind.hpp"
+#include <vector>
+#include <array>
 
 int main(int , char**)
 {
@@ -9,13 +11,12 @@ int main(int , char**)
     try
     {
         arr.at(0) = 1;
-        const int idx = easyfind< std::array<int, 5> >( arr, 0 );
-        std::cout << "Index: " << idx << std::endl;
-        std::cout << "Value: " << arr.at( idx ) << std::endl;
+        const int idx = easyfind< std::array<int, 5> >( arr, 1 );
+        std::cout << idx << std::endl;
     }
     catch(const std::exception& e)
     {
-        std::cerr << "Error: no value was found" << '\n';
+        std::cerr << "Error: no value was found\n";
     }
 
     std::vector<int> vector;
@@ -28,10 +29,8 @@ int main(int , char**)
 
     try
     {
-        const int idx = easyfind<std::vector<int> >( vector, 5 );
-        std::cout << "Index: " << idx << std::endl;
-        std::cout << "Value: " << arr.at( idx ) << std::endl;
-
+        const int idx = easyfind< std::vector<int> >( vector, 1 );
+        std::cout << idx << std::endl;
     }
     catch(const std::exception& e)
     {

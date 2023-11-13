@@ -1,16 +1,14 @@
 #include "Span.hpp"
 
-Span::Span() : N ( 0 ) { container.reserve( 0 ); }
+Span::Span() : N ( 0 ) {}
 
-Span::Span( unsigned int vecSize ) : N ( vecSize ) { container.reserve( N ); }
+Span::Span( unsigned int vecSize ) : N ( vecSize ) {}
 
 Span::Span( const Span& obj ) : N ( obj.N ) { *this = obj; }
 
 Span& Span::operator=( const Span& rhs )
 {
-    std::vector<int> vec( rhs.container );
-
-    this->container = vec;
+    this->container = rhs.container;
 
     return ( *this );
 }
@@ -20,7 +18,7 @@ Span::~Span() { container.clear(); }
 void Span::addNumber( int value )
 {
     if ( container.size() >= N )
-        throw std::out_of_range( "Error: out of range" );
+        throw std::out_of_range( "addNumber: out of range" );
     else
     {
         container.push_back( value );
@@ -58,9 +56,9 @@ int Span::longestSpan() const
 {
     if ( container.size() > 2 )
     {
-        size_t  size    ( container.size() - 1 );
+        size_t  size    ( container.size() );
         int     min     ( container.at( 0 ) );
-        int     max     ( container.at( size ) );
+        int     max     ( container.at( size - 1 ) );
         
         if ( min < 0 )
             return ( ( min - max ) * -1 );
@@ -71,17 +69,19 @@ int Span::longestSpan() const
         throw std::out_of_range( "Error: array size" );
 }
 
-void Span::fillContainer()
+void Span::fillContainer( std::vector<int>::iterator begin, std::vector<int>::iterator end )
 {
-    srand( time( 0 ) );
-
-    // container.resize( N );
-    // std::fill( container.begin() + container.size(), container.begin() + container.size() , 0 );
-
-    for ( size_t i = 0; i < N - ( container.size() ); ++i )
+    try
     {
-        container.push_back( rand() % 100 );
-        std::sort( container.begin(), container.end() );
+        while ( begin != end )
+        {
+            addNumber( *begin );
+            begin++;
+        }
     }
-
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 }

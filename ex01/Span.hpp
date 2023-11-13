@@ -23,7 +23,7 @@ public:
     void addNumber( int );
     int shortestSpan() const;
     int longestSpan() const;
-    void fillContainer();
+    void fillContainer( std::vector<int>::iterator, std::vector<int>::iterator );
 };
 
 
