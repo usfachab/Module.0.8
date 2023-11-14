@@ -1,15 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachaab <yachaab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 13:16:57 by yachaab           #+#    #+#             */
+/*   Updated: 2023/11/14 18:01:41 by yachaab          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 
 Span::Span() : N ( 0 ) {}
 
-Span::Span( unsigned int vecSize ) : N ( vecSize ) {}
+Span::Span( unsigned int vecSize ) : N ( vecSize )
+{
+    try
+    {
+        this->container.reserve( N );
+    }
+    catch (  const std::exception& e )
+    {
+        std::cerr << e.what() << std::endl;
+    }
+}
 
 Span::Span( const Span& obj ) : N ( obj.N ) { *this = obj; }
 
 Span& Span::operator=( const Span& rhs )
 {
-    this->container = rhs.container;
-
+    try
+    {
+        this->container.clear();
+        this->container.reserve( N );
+        this->container = rhs.container;
+    }
+    catch (  const std::exception& e )
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    
     return ( *this );
 }
 
@@ -17,12 +48,19 @@ Span::~Span() { container.clear(); }
 
 void Span::addNumber( int value )
 {
-    if ( container.size() >= N )
-        throw std::out_of_range( "addNumber: out of range" );
-    else
+    try
     {
-        container.push_back( value );
-        std::sort( container.begin(), container.end() );
+        if ( container.size() >= N )
+            throw std::out_of_range( "Error: addNumber: couldn't add element" );
+        else
+        {
+            container.push_back( value );
+            std::sort( container.begin(), container.end() );
+        }
+    }
+    catch (  const std::exception& e )
+    {
+        std::cerr << e.what() << std::endl;
     }
 }
 
@@ -49,7 +87,7 @@ int Span::shortestSpan() const
         return ( diff );
     }
     else
-        throw std::out_of_range( "Error: array size" );
+        throw std::out_of_range( "Error: number of elements should be at least 3" );
 }
 
 int Span::longestSpan() const
@@ -66,13 +104,15 @@ int Span::longestSpan() const
             return ( max - min );
     }
     else
-        throw std::out_of_range( "Error: array size" );
+        throw std::out_of_range( "Error: longestSpan: number of elements should be at least 3" );
 }
 
 void Span::fillContainer( iterator begin, iterator end )
 {
     try
     {
+        if ( begin >= end )
+            throw std::out_of_range( "Please use an leget range iterators" );
         while ( begin != end )
         {
             addNumber( *begin );

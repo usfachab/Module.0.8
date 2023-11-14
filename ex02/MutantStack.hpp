@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yachaab <yachaab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/14 13:16:31 by yachaab           #+#    #+#             */
+/*   Updated: 2023/11/14 13:16:32 by yachaab          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 #include <iostream>
@@ -12,13 +24,3 @@ public:
     iterator begin();
     iterator end();
 };
-
-
-
-
-// * deque methods : size , = [], front, back, empty, begin, end
-// * rbegin, rend, insert, erase, clear, push_back, push_front, pop_back, pop_front
-
-// * stack methods : top, empty, size, push, pop
-// * deque methods : front, empty, size, push_front, pop_front
-// * deque methods to make stack iterator : begin, end
