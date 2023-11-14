@@ -6,7 +6,7 @@
 /*   By: yachaab <yachaab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:16:55 by yachaab           #+#    #+#             */
-/*   Updated: 2023/11/14 18:05:19 by yachaab          ###   ########.fr       */
+/*   Updated: 2023/11/14 21:49:25 by yachaab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int main()
 {
     try
     {
-
         Span span(0);
         
         Span span1( 10 );
@@ -31,9 +30,8 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-
-    std::vector<int> arr;
     
+    std::vector<int> arr;
     arr.push_back( -9 );
     arr.push_back( 1 );
     arr.push_back( 2 );
@@ -44,16 +42,16 @@ int main()
 
     try
     {
-        Span span( 3 );
+        Span span( 50 );
 
         span.addNumber( 7 );
-        span.addNumber( 8 );
+        span.addNumber( 9 );
         span.addNumber( 9 );
 
-        iterator itb = arr.begin();
-        iterator ite = arr.end();
+        std::vector<int>::iterator itb = arr.begin();
+        std::vector<int>::iterator ite = arr.end();
 
-        span.fillContainer( itb, ite );
+        span.fillContainer<std::vector<int> >( itb, ite );
 
         std::cout << "Shortest distance: " << span.shortestSpan() << std::endl;
         std::cout << "Longest distance: " << span.longestSpan() << std::endl;

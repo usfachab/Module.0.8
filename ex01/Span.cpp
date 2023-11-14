@@ -6,7 +6,7 @@
 /*   By: yachaab <yachaab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:16:57 by yachaab           #+#    #+#             */
-/*   Updated: 2023/11/14 18:01:41 by yachaab          ###   ########.fr       */
+/*   Updated: 2023/11/14 22:43:18 by yachaab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,6 @@ void Span::addNumber( int value )
     }
 }
 
-void Span::printVec() const
-{
-    for( unsigned int i = 0; i < container.size(); i++ )
-        std::cout << container.at( i ) << ", ";
-    std::cout << std::endl;
-}
-
 int Span::shortestSpan() const
 {
     if ( container.size() > 2 )
@@ -105,23 +98,4 @@ int Span::longestSpan() const
     }
     else
         throw std::out_of_range( "Error: longestSpan: number of elements should be at least 3" );
-}
-
-void Span::fillContainer( iterator begin, iterator end )
-{
-    try
-    {
-        if ( begin >= end )
-            throw std::out_of_range( "Please use an leget range iterators" );
-        while ( begin != end )
-        {
-            addNumber( *begin );
-            begin++;
-        }
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
 }
