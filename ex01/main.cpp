@@ -23,8 +23,8 @@ int main()
         span1 = span;
         
         span1.addNumber( 1 );
-        span1.addNumber( 1 );
-        span1.addNumber( 1 );
+        span1.addNumber( 2 );
+        span1.addNumber( 3 );
     }
     catch (  const std::exception& e )
     {
@@ -45,7 +45,6 @@ int main()
         Span span( 50 );
 
         span.addNumber( 7 );
-        span.addNumber( 9 );
         span.addNumber( 9 );
 
         std::vector<int>::iterator itb = arr.begin();

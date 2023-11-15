@@ -22,8 +22,7 @@ class MutantStack : public std::stack<T>
 {
 public:
     typedef typename std::deque<T>::iterator iterator;
-    iterator begin() const;
-    iterator end() const;
+    typedef typename std::deque<T>::const_iterator const_iterator;
     iterator begin();
     iterator end();
 };

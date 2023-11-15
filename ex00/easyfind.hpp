@@ -16,12 +16,15 @@
 #include <iostream>
 
 template <typename T>
-int easyfind( const T& container, int value )
+int easyfind( T& container, int value )
 {
-    for ( size_t i = 0; i < container.size(); i++ )
+    
+    typename T::const_iterator it = container.begin();
+
+    for ( ; it != container.end(); it++ )
     {
-        if ( container[ i ]  == value )
-            return i;
+        if ( *it == value )
+            return ( *it );
     }
     throw std::exception();
 }
